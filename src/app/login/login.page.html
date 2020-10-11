@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title style="text-align: center;">
+      Inicio
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="login" padding >
+  
+ 
+    <!-- <ion-card-header style="text-align: center;">Carga Crédito</ion-card-header> -->
+    
+    <form class="form" [formGroup] = "loginForm" (ngSubmit)="submit()">
+      <ion-list> 
+    <ion-item>
+      <ion-label>Usuario: </ion-label>
+      <ion-input [(ngModel)]= "user.correo" formControlName="correo" name="correo" type="text"></ion-input>
+    </ion-item>
+    <div *ngFor= "let error of errorMessages.correo">
+      <ng-container *ngIf= "correo.hasError(error.type) && (correo.dirty || correo.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+    
+    <ion-item>
+      <ion-label>Contraseña: </ion-label>
+      <ion-input [(ngModel)]= "user.clave" formControlName="clave" name="clave" type="password"></ion-input>
+    </ion-item>
+    <div *ngFor= "let error of errorMessages.clave">
+      <ng-container *ngIf= "clave.hasError(error.type) && (clave.dirty || clave.touched)">
+        <small class="error-message">{{error.message}}</small>
+      </ng-container>
+    </div>
+
+    <ion-button color="light" style="margin-left: 35%;" (click)="Ingresar()" [disabled] = "loginForm.invalid" >Ingresar</ion-button><br>
+    <ion-router-link style="margin-left: 38%;" [routerLink]="['/registro']"  class="registro">Registrarse</ion-router-link>
+  </ion-list>
+  </form>
+
+
+
+
+ <ion-content style="vertical-align: center;">
+  <ion-row style="margin-left: 15%;">
+    <ion-col>
+      <button  class="botones-usuario" id="1" (click)="IngresarTest($event)">ADMIN</button>   
+    </ion-col>
+    <ion-col>
+      <button  class="botones-usuario"  id="2" (click)="IngresarTest($event)">INVITADO</button>
+    </ion-col>
+  </ion-row>
+  <ion-row style="margin-left: 15%;">
+    <ion-col>
+      <button  class="botones-usuario"  id="3" (click)="IngresarTest($event)">USUARIO</button>
+    </ion-col>
+    <ion-col>
+      <button  class="botones-usuario"  id="4" (click)="IngresarTest($event)">ANÓNIMO</button>
+    </ion-col>
+  </ion-row >
+  <button style="margin-left: 40%;"  id="5" (click)="IngresarTest($event)" class="botones-usuario">TESTER</button><br>
+  <img style="z-index: 99999;" src="../../assets/alarma.png" alt="">
+ </ion-content> 
+
+
+</ion-content>
