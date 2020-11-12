@@ -1,5 +1,3 @@
-
-
 <ion-app>
   <div id="custom-overlay" [style.display]="showSplash ? 'flex': 'none'">
     <div class="flb">
@@ -8,5 +6,7 @@
       <div class="Aligner-item Aligner-item--bottom"></div>
     </div>
   </div>
-  <ion-router-outlet></ion-router-outlet>
+  <div [style.display]="splash ? 'none' : 'flex'">
+    <ion-router-outlet ></ion-router-outlet>
+  </div>
 </ion-app>
